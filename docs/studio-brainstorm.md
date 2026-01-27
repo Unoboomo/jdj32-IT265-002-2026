@@ -17,7 +17,7 @@
 
 ## Vision Statement
 
-> To bring games to the masses that will bring the masses to games
+- To bring games to the masses that will bring the masses to games
 
 ---
 
@@ -39,13 +39,13 @@
 
 ## Genre Focus
 
-> Dungeon Crawler
+- Dungeon Crawler
 
 ---
 
 ## Unique Selling Point (USP)
 
-> Difficulty adjustment for different skill-level play groups
+- Difficulty adjustment for different skill-level play groups
 
 ---
 
@@ -74,4 +74,4 @@
 
 ## Additional Notes
 
-> N/a
+- N/A
