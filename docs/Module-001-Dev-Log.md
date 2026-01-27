@@ -6,9 +6,9 @@
 ### Date: [01/26/2026]
 
 #### Goals for this Module
-- [x] Complete Introduction discussion post 
-- [x] Complete Studio Brainstorm Assignment
-- [ ] Start brainstorming ideas for project game (in progress)
+  [x] Complete Introduction discussion post 
+  [x] Complete Studio Brainstorm Assignment
+  [ ] Start brainstorming ideas for project game (in progress)
 
 #### Progress
 - **What I accomplished**:
