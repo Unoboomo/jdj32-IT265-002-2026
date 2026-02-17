@@ -6,6 +6,36 @@
 
 <!-- Repeat the below as needed-->
 
+### Date: [02/16/2026]
+
+#### Goals for this Module
+
+- [X] Complete the "What makes a Game Bad" discussion
+- [ ] Start brainstorming ideas for project game (in progress)
+
+#### Progress
+
+- **What I accomplished**:
+  - Module 3 case study
+- **Challenges faced**:
+  - CS 490 has a huge workload
+- **Solutions**:
+  - Panic
+
+#### Learnings
+
+- N/a
+
+#### Free Thinking
+
+- N/a
+
+#### Next Steps
+
+- Keep working on learning frontend dev for CS 490, keep brainstorming for my game
+
+--------------------------------------------------------------------------------
+
 ### Date: [02/13/2026]
 
 #### Goals for this Module
