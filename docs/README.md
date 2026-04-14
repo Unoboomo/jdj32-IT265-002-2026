@@ -8,4 +8,5 @@
 [Module 6 devlog](https://unoboomo.github.io/jdj32-IT265-002-2026/Module-006-Dev-Log.html)  
 [Module 7 devlog](https://unoboomo.github.io/jdj32-IT265-002-2026/Module-007-Dev-Log.html)  
 [Module 8 devlog](https://unoboomo.github.io/jdj32-IT265-002-2026/Module-008-Dev-Log.html)  
+[Module 9 devlog](https://unoboomo.github.io/jdj32-IT265-002-2026/Module-009-Dev-Log.html)  
 
