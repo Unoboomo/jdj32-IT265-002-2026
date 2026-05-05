@@ -11,4 +11,4 @@
 [Module 9 devlog](https://unoboomo.github.io/jdj32-IT265-002-2026/Module-009-Dev-Log.html)  
 [Module 11 devlog](https://unoboomo.github.io/jdj32-IT265-002-2026/Module-011-Dev-Log.html)  
 
-[Game Design Document](https://unoboomo.github.io/jdj32-IT265-002-2026/pdfs/Game-Design-Document.pdf)  
+[Game Design Document](https://unoboomo.github.io/jdj32-IT265-002-2026/Game-Design-Document.pdf)  
