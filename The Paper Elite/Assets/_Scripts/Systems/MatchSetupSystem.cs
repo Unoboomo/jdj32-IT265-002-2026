@@ -10,7 +10,11 @@ public class MatchSetupSystem : MonoBehaviour
     private void Start()
     {
         CardSystem.Instance.Setup(deckData);
-        DrawCardsGA drawCardsGA = new(defaultDrawAmount);
-        ActionSystem.Instance.Perform(drawCardsGA);
+        RefillManaGA refillManaGA = new();
+        ActionSystem.Instance.Perform(refillManaGA, () =>
+        {
+            DrawCardsGA drawCardsGA = new(defaultDrawAmount);
+            ActionSystem.Instance.Perform(drawCardsGA);
+        });
     }
 }

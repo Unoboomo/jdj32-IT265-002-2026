@@ -75,7 +75,9 @@ public class CardSystem : Singleton<CardSystem>
     private IEnumerator PlayCardPerformer(PlayCardGA playCardGA)
     {
         yield return DiscardCard(playCardGA.Card);
-        foreach(var effect in playCardGA.Card.Effects)
+        SpendManaGA spendManaGA = new(playCardGA.Card.Mana);
+        ActionSystem.Instance.AddReaction(spendManaGA);
+        foreach (var effect in playCardGA.Card.Effects)
         {
             PerformEffectGA performEffectGA = new(effect);
             ActionSystem.Instance.AddReaction(performEffectGA);

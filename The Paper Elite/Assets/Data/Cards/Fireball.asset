@@ -16,3 +16,10 @@ MonoBehaviour:
   <Mana>k__BackingField: 2
   <Type>k__BackingField: Attack
   <Image>k__BackingField: {fileID: 21300000, guid: 215cbe2cf89728c44ab4964418d0a497, type: 3}
+  <Effects>k__BackingField:
+  - rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
