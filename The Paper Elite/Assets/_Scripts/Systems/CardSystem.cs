@@ -75,7 +75,11 @@ public class CardSystem : Singleton<CardSystem>
     private IEnumerator PlayCardPerformer(PlayCardGA playCardGA)
     {
         yield return DiscardCard(playCardGA.Card);
-        // Perform effects
+        foreach(var effect in playCardGA.Card.Effects)
+        {
+            PerformEffectGA performEffectGA = new(effect);
+            ActionSystem.Instance.AddReaction(performEffectGA);
+        }
     }
     // Reactions
     private void EnemyTurnPreReaction(EnemyTurnGA enemyTurnGA)
