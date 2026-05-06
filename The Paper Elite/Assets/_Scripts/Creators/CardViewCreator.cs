@@ -10,7 +10,7 @@ public class CardViewCreator : Singleton<CardViewCreator>
         CardView cardView = Instantiate(cardViewPrefab, position, rotation);
         Vector3 targetScale = cardView.transform.localScale;
         cardView.transform.localScale = Vector3.zero;
-        cardView.transform.DOScale(targetScale, 0.2f);
+        cardView.transform.DOScale(targetScale, 0.15f);
         cardView.Setup(card);
         return cardView;
     }

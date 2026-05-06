@@ -9,7 +9,7 @@ public class HandView : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineContainer;
 
-    private float updateCardPositionsTiming = 0.2f;
+    private float updateCardPositionsTiming = 0.15f;
     private readonly List<CardView> cards = new();
 
     public IEnumerator AddCard(CardView cardView) 

@@ -9,6 +9,8 @@ public class CardSystem : Singleton<CardSystem>
     [SerializeField] private Transform drawPilePoint;
     [SerializeField] private Transform discardPilePoint;
 
+    //in addition to having their own deck, heros also have their own draw pile, discard pile, and hand, and heroes
+    //are switched out after every enemy turn, moving down a list
     private readonly List<Card> drawPile = new();
     private readonly List<Card> discardPile = new();
     private readonly List<Card> hand = new();
