@@ -44,7 +44,7 @@ public class HandView : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             var card = cards[i];
-            card.IsInteractive = false;
+            card.IsAnimating = true;
 
             float p = firstCardPosition + i * cardSpacing;
             Vector3 splinePosition = spline.EvaluatePosition(p);
@@ -60,10 +60,9 @@ public class HandView : MonoBehaviour
                 .Join(rot)
                 .OnComplete(() =>
                 {
-                    card.IsInteractive = true;
+                    card.IsAnimating = false;
                 });
         }
         yield return new WaitForSeconds(duration);
-        
     }
 }
