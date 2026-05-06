@@ -28,6 +28,13 @@ public class CardView : MonoBehaviour
         type.text = card.Type;
         imageSR.sprite = card.Image;
     }
+    private void OnDisable()
+    {
+        if (CardViewHoverSystem.Instance != null)
+        {
+            CardViewHoverSystem.Instance.Hide();
+        }
+    }
 
     public void OnMouseEnter()
     {

@@ -22,6 +22,10 @@ public class DamageSystem : Singleton<DamageSystem>
     {
         foreach (var target in dealDamageGA.Targets)
         {
+            if (target == null || target.gameObject == null)
+            {
+                continue;
+            }
             target.Damage(dealDamageGA.Amount);
             Instantiate(damageVFX, target.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.15f);
@@ -33,9 +37,8 @@ public class DamageSystem : Singleton<DamageSystem>
                     ActionSystem.Instance.AddReaction(killEnemyGA);
                 }
                 else
-                {
-                    //do game over logic here
-                    //open game over scene
+                { 
+                    ActionSystem.Instance.AddReaction(new KillPlayerGA());
                 }
             }
         }

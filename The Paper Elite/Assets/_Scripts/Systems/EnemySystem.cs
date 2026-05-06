@@ -12,6 +12,9 @@ public class EnemySystem : Singleton<EnemySystem>
         ActionSystem.AttachPerformer<EnemyTurnGA>(EnemyTurnPerformer);
         ActionSystem.AttachPerformer<AttackHeroGA>(AttackHeroPerformer);
         ActionSystem.AttachPerformer<KillEnemyGA>(KillEnemyPerformer);
+
+        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPreReaction, ReactionTiming.PRE);
+        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
     }
 
     void OnDisable()
@@ -19,6 +22,9 @@ public class EnemySystem : Singleton<EnemySystem>
         ActionSystem.DetachPerformer<EnemyTurnGA>();
         ActionSystem.DetachPerformer<AttackHeroGA>();
         ActionSystem.DetachPerformer<KillEnemyGA>();
+
+        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPreReaction, ReactionTiming.PRE);
+        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
     }
 
     public void Setup(List<EnemyData> enemyDatas)
@@ -29,6 +35,15 @@ public class EnemySystem : Singleton<EnemySystem>
         }
     }
 
+    // Reactions
+    private void EnemyTurnPreReaction(EnemyTurnGA enemyTurnGA)
+    {
+        ActionSystem.Instance.AddReaction(new EndPlayerTurnGA());
+    }
+    private void EnemyTurnPostReaction(EnemyTurnGA enemyTurnGA)
+    {
+        ActionSystem.Instance.AddReaction(new SwitchActivePlayerGA());
+    }
     // Performers
 
     private IEnumerator EnemyTurnPerformer(EnemyTurnGA enemyTurnGA)

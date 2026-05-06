@@ -42,8 +42,9 @@ public class HandView : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             var card = cards[i];
-            card.IsAnimating = true;
-
+            string layoutId = "HandLayout_" + card.GetEntityId();
+            DOTween.Kill(layoutId);
+            card.IsAnimating = false;
             float p = firstCardPosition + i * cardSpacing;
             Vector3 splinePosition = spline.EvaluatePosition(p);
             Vector3 forward = spline.EvaluateTangent(p);
@@ -52,8 +53,9 @@ public class HandView : MonoBehaviour
 
             var move = card.transform.DOMove(splinePosition + transform.position + 0.01f * i * Vector3.back, duration);
             var rot = card.transform.DORotate(rotation.eulerAngles, duration);
-
+            card.IsAnimating = true;
             DOTween.Sequence()
+                .SetId(layoutId)
                 .Join(move)
                 .Join(rot)
                 .OnComplete(() =>

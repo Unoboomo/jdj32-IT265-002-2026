@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public static class ListExtensions 
 {
-   public static T Draw<T>(this List<T> list)
+   public static T Draw<T>(this List<T> list) //currently scrabble bags the deck, if we ever scry or anything, we will need to shuffle the deck
     {
         if (list.Count == 0)
         {
