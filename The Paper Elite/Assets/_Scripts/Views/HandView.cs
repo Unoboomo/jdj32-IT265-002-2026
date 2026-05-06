@@ -8,14 +8,12 @@ using System.Linq;
 public class HandView : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineContainer;
-
-    private float updateCardPositionsTiming = 0.15f;
     private readonly List<CardView> cards = new();
 
     public IEnumerator AddCard(CardView cardView) 
     {
         cards.Add(cardView);
-        yield return UpdateCardPositions(updateCardPositionsTiming);
+        yield return UpdateCardPositions(0.2f);
     }
     public CardView RemoveCard(Card card)
     {
@@ -25,7 +23,7 @@ public class HandView : MonoBehaviour
             return null;
         }
         cards.Remove(cardView);
-        StartCoroutine(UpdateCardPositions(updateCardPositionsTiming));
+        StartCoroutine(UpdateCardPositions(0.15f));
         return cardView;
     }
     private CardView GetCardView(Card card)
