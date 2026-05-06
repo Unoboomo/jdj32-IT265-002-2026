@@ -8,7 +8,7 @@ public class Card
     public string Description => data.Description;
     public Sprite Image => data.Image;
     public List<Effect> Effects => data.Effects;
-    public string Type => data.Type;
+    public string Type => data.Type.ToString();
     public int Mana { get; private set; }
     private readonly CardData data;
     public Card(CardData cardData)
