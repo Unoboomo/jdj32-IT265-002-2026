@@ -9,7 +9,8 @@ public class ObjectSelector : MonoBehaviour
     private void Awake()
     {
         var c = GetComponent<Camera>();
-        if (c != null && _camera != null) {
+        if (c != null && _camera != null)
+        {
             _camera = c;
         }
 
@@ -19,7 +20,7 @@ public class ObjectSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("user clicked left mouse button");
             Vector3 mouse = Vector3.zero;

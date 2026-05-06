@@ -3,18 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 using DG.Tweening;
+using System.Linq;
+
 public class HandView : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineContainer;
 
+    private float updateCardPositionsTiming = 0.2f;
     private readonly List<CardView> cards = new();
 
     public IEnumerator AddCard(CardView cardView) 
     {
         cards.Add(cardView);
-        yield return UpdateCardPositions(0.2f);
+        yield return UpdateCardPositions(updateCardPositionsTiming);
     }
-
+    public CardView RemoveCard(Card card)
+    {
+        CardView cardView = GetCardView(card);
+        if (cardView == null )
+        {
+            return null;
+        }
+        cards.Remove(cardView);
+        StartCoroutine(UpdateCardPositions(updateCardPositionsTiming));
+        return cardView;
+    }
+    private CardView GetCardView(Card card)
+    {
+        return cards.Where(cardView => cardView.Card == card).FirstOrDefault();
+    }
     private IEnumerator UpdateCardPositions(float duration)
     {
         if (cards.Count == 0)
