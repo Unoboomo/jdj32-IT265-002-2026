@@ -12,3 +12,5 @@
 [Module 11 devlog](https://unoboomo.github.io/jdj32-IT265-002-2026/Module-011-Dev-Log.html)  
 
 [Game Design Document](https://unoboomo.github.io/jdj32-IT265-002-2026/pdfs/Game-Design-Document.pdf)  
+
+[The Paper Elite Digital Prototype](https://unoboomo.github.io/jdj32-IT265-002-2026/The-Paper-Elite-Buildv2/)
