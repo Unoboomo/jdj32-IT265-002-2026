@@ -29,6 +29,7 @@ public class PlayerSystem : Singleton<PlayerSystem>
     public void Setup(List<HeroData> heroDatas)
     {
         PlayerList.Clear();
+        deadPlayers = 0;
         foreach (var heroData in heroDatas)
         {
             Player player = new(heroData);
@@ -73,9 +74,16 @@ public class PlayerSystem : Singleton<PlayerSystem>
     {
         if (!MoveToNextPlayer())
         {
-            //end of game
+            UISystem.Instance.ShowLoseScreen();
             yield break;
         }
+
+        if (PlayerCount > 1)
+        {
+            UISystem.Instance.ShowTurnTransition($"Player {activePlayerIndex + 1}");
+            yield return new WaitWhile(() => UISystem.Instance.IsWaitingForPlayerReady);
+        }
+        
 
         ActionSystem.Instance.AddReaction(new RefillManaGA());
         ActionSystem.Instance.AddReaction(new DrawCardsGA(Player.DEFAULT_DRAW_AMOUNT));
@@ -91,8 +99,8 @@ public class PlayerSystem : Singleton<PlayerSystem>
             deadPlayers++;
             if (deadPlayers >= PlayerCount)
             {
-                //game over
-                Debug.Log("All players are dead. Game Over.");
+                UISystem.Instance.ShowLoseScreen();
+                yield break;
             }
         }
         yield return null;

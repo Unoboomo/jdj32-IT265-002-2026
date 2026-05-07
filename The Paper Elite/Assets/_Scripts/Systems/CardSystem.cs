@@ -112,4 +112,16 @@ public class CardSystem : Singleton<CardSystem>
         DrawPile.AddRange(DiscardPile);
         DiscardPile.Clear();
     }
+    public void Cleanup()
+    {
+        if (Hand != null) Hand.Clear();
+        if (DrawPile != null) DrawPile.Clear();
+        if (DiscardPile != null) DiscardPile.Clear();
+
+        if (handView != null)
+        {
+            handView.ClearHand();
+        }
+    }
+
 }

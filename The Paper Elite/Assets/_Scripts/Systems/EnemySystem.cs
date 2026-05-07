@@ -71,5 +71,21 @@ public class EnemySystem : Singleton<EnemySystem>
     private IEnumerator KillEnemyPerformer(KillEnemyGA killEnemyGA)
     {
         yield return enemyBoardView.RemoveEnemy(killEnemyGA.EnemyView);
+        if (Enemies.Count == 0)
+        {
+            UISystem.Instance.ShowWinScreen();
+        }
+    }
+    public void Cleanup()
+    {
+        foreach (var enemy in Enemies)
+        {
+            if (enemy != null && enemy.gameObject != null)
+            {
+                enemy.transform.DOKill();
+                Destroy(enemy.gameObject);
+            }
+        }
+        Enemies.Clear();
     }
 }

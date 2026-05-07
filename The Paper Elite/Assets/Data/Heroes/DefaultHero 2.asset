@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fac7ed58c70cb94195add0ad5bd4715, type: 3}
   m_Name: DefaultHero 2
   m_EditorClassIdentifier: Assembly-CSharp::HeroData
-  <Image>k__BackingField: {fileID: 21300000, guid: 4f1ece14d4f95aa4e82d2f7365df8da5, type: 3}
-  <Health>k__BackingField: 44
+  <Image>k__BackingField: {fileID: 21300000, guid: 4cb6862f255f51f47b011ddcd1a25805, type: 3}
+  <Health>k__BackingField: 50
   <Deck>k__BackingField:
-  - {fileID: 11400000, guid: 4abab9cf78ac63d47b0c6d5a7ccd4abd, type: 2}
-  - {fileID: 11400000, guid: 4abab9cf78ac63d47b0c6d5a7ccd4abd, type: 2}
-  - {fileID: 11400000, guid: 4abab9cf78ac63d47b0c6d5a7ccd4abd, type: 2}
-  - {fileID: 11400000, guid: 4abab9cf78ac63d47b0c6d5a7ccd4abd, type: 2}
+  - {fileID: 11400000, guid: 718b3dc2300eeae4aa4f36423507a496, type: 2}
+  - {fileID: 11400000, guid: 718b3dc2300eeae4aa4f36423507a496, type: 2}
+  - {fileID: 11400000, guid: 718b3dc2300eeae4aa4f36423507a496, type: 2}
+  - {fileID: 11400000, guid: 718b3dc2300eeae4aa4f36423507a496, type: 2}
   - {fileID: 11400000, guid: 718b3dc2300eeae4aa4f36423507a496, type: 2}
   - {fileID: 11400000, guid: 718b3dc2300eeae4aa4f36423507a496, type: 2}
   - {fileID: 11400000, guid: 718b3dc2300eeae4aa4f36423507a496, type: 2}

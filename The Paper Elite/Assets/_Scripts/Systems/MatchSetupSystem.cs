@@ -1,23 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchSetupSystem : MonoBehaviour
+public class MatchSetupSystem : Singleton<MatchSetupSystem>
 {
-    private int defaultDrawAmount = 5;
+    private const int DEFAULT_DRAW_AMOUNT = 5;
 
-    [SerializeField] private List<HeroData> heroDatas;
     [SerializeField] private List<EnemyData> enemyDatas;
-    private void Start()
+    public void StartCombat(List<HeroData> selectedHeroes)
     {
-        PlayerSystem.Instance.Setup(heroDatas);
-
+        if (selectedHeroes == null || selectedHeroes.Count == 0)
+        {
+            return;
+        }
+        PlayerSystem.Instance.Setup(selectedHeroes);
         EnemySystem.Instance.Setup(enemyDatas);
 
         RefillManaGA refillManaGA = new();
         ActionSystem.Instance.Perform(refillManaGA, () =>
         {
-            DrawCardsGA drawCardsGA = new(defaultDrawAmount);
+            DrawCardsGA drawCardsGA = new(DEFAULT_DRAW_AMOUNT);
             ActionSystem.Instance.Perform(drawCardsGA);
         });
+    }
+    public void CleanupMatch()
+    {
+        CardSystem.Instance.Cleanup();
+        EnemySystem.Instance.Cleanup();
     }
 }
