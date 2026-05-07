@@ -8,14 +8,12 @@ using System.Linq;
 public class HandView : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineContainer;
-
-    private float updateCardPositionsTiming = 0.2f;
     private readonly List<CardView> cards = new();
 
     public IEnumerator AddCard(CardView cardView) 
     {
         cards.Add(cardView);
-        yield return UpdateCardPositions(updateCardPositionsTiming);
+        yield return UpdateCardPositions(0.2f);
     }
     public CardView RemoveCard(Card card)
     {
@@ -25,7 +23,7 @@ public class HandView : MonoBehaviour
             return null;
         }
         cards.Remove(cardView);
-        StartCoroutine(UpdateCardPositions(updateCardPositionsTiming));
+        StartCoroutine(UpdateCardPositions(0.15f));
         return cardView;
     }
     private CardView GetCardView(Card card)
@@ -44,8 +42,9 @@ public class HandView : MonoBehaviour
         for (int i = 0; i < cards.Count; i++)
         {
             var card = cards[i];
-            card.IsAnimating = true;
-
+            string layoutId = "HandLayout_" + card.GetEntityId();
+            DOTween.Kill(layoutId);
+            card.IsAnimating = false;
             float p = firstCardPosition + i * cardSpacing;
             Vector3 splinePosition = spline.EvaluatePosition(p);
             Vector3 forward = spline.EvaluateTangent(p);
@@ -54,8 +53,9 @@ public class HandView : MonoBehaviour
 
             var move = card.transform.DOMove(splinePosition + transform.position + 0.01f * i * Vector3.back, duration);
             var rot = card.transform.DORotate(rotation.eulerAngles, duration);
-
+            card.IsAnimating = true;
             DOTween.Sequence()
+                .SetId(layoutId)
                 .Join(move)
                 .Join(rot)
                 .OnComplete(() =>
@@ -64,5 +64,17 @@ public class HandView : MonoBehaviour
                 });
         }
         yield return new WaitForSeconds(duration);
+    }
+    public void ClearHand()
+    {
+        foreach (var card in cards)
+        {
+            if (card != null && card.gameObject != null)
+            {
+                card.transform.DOKill();
+                Destroy(card.gameObject);
+            }
+        }
+        cards.Clear();
     }
 }

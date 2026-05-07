@@ -1,4 +1,3 @@
-using OpenCover.Framework.Model;
 using System.Collections;
 using UnityEngine;
 
@@ -6,44 +5,38 @@ public class ManaSystem : Singleton<ManaSystem>
 {
     [SerializeField] private ManaUI manaUI;
 
-    private const int MAX_MANA = 3;
-
-    private int currentMana = MAX_MANA;
+    private Player ActivePlayer => PlayerSystem.Instance.ActivePlayer;
 
     void OnEnable()
     {
         ActionSystem.AttachPerformer<SpendManaGA>(SpendManaPerformer);
         ActionSystem.AttachPerformer<RefillManaGA>(RefillManaPerformer);
-
-        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
     }
     public bool HasEnoughMana(int mana)
     {
-        return currentMana >= mana;
+        if (ActivePlayer == null) return false;
+        return ActivePlayer.CurrentMana >= mana;
     }
     void OnDisable()
     {
         ActionSystem.DetachPerformer<SpendManaGA>();
         ActionSystem.DetachPerformer<RefillManaGA>();
-
-        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
     }
     private IEnumerator SpendManaPerformer(SpendManaGA spendManaGA)
     {
-        currentMana -= spendManaGA.Amount;
-        manaUI.UpdateManaText(currentMana);
+        ActivePlayer.CurrentMana -= spendManaGA.Amount;
+        manaUI.UpdateManaText(ActivePlayer.CurrentMana);
         yield return null;
     }
 
     private IEnumerator RefillManaPerformer(RefillManaGA refillManaGA)
     {
-        currentMana = MAX_MANA;
-        manaUI.UpdateManaText(currentMana);
+        ActivePlayer.CurrentMana = Player.DEFAULT_MANA;
+        manaUI.UpdateManaText(ActivePlayer.CurrentMana);
         yield return null;
     }
-    private void EnemyTurnPostReaction(EnemyTurnGA enemyTurnGA)
+    public void UpdateManaUI()
     {
-        RefillManaGA refillManaGA = new();
-        ActionSystem.Instance.AddReaction(refillManaGA);
+        manaUI.UpdateManaText(ActivePlayer.CurrentMana);
     }
 }

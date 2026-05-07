@@ -4,8 +4,8 @@ public class HeroSystem : Singleton<HeroSystem>
 {
     [field: SerializeField] public HeroView HeroView {  get; private set; }
 
-    public void Setup(HeroData heroData)
+    public void Setup(int maxHealth, int currentHealth, Sprite image)
     {
-        HeroView.Setup(heroData);
+        HeroView.Setup(maxHealth, currentHealth, image);
     }
 }
